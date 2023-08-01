@@ -1,0 +1,67 @@
+CREATE SCHEMA Estudio_Juridico;
+Use Estudio_juridico;
+
+create table Deudores(
+ID int,
+nombre_completo varchar(30),
+fecha_de_contacto date,
+ciudad varchar(30),
+edad varchar(30),	
+email varchar(30)
+);
+alter table deudores
+add email varchar(30);
+
+
+
+create table Creditos(
+ID_empresa int,
+Monto varchar(30),
+fecha_del_credito date,
+Cantidad_creditos varchar(30)
+);
+alter table creditos
+add id_credito int;
+alter table creditos
+add id_deudor int;
+
+create table Empleados(
+ID_Empleados int,
+Nombre_completo varchar(30),
+DNI_empleados varchar(30),
+Telefono varchar(30),
+email varchar(30)
+);
+alter table empleados
+add id_empresas int;
+
+create table Estudio(
+ID_Empleados int,
+ID_empresas int,
+datos_del_estudio varchar(30),
+Telefono varchar(30),
+email varchar(30)
+);
+
+create table Empresas(
+ID_Empleados int,
+ID_empresas int,
+Nombre varchar(30),
+Telefono varchar(30),
+email varchar(30)
+);
+
+ALTER TABLE Deudores
+CHANGE COLUMN id id INT NOT NULL AUTO_INCREMENT,
+ADD PRIMARY KEY (id);
+
+ALTER TABLE empresas
+CHANGE COLUMN id_empresas id INT NOT NULL AUTO_INCREMENT,
+ADD primary key (id_empresas);
+
+ALTER TABLE creditos
+CHANGE COLUMN id_credito id_credito INT NOT NULL AUTO_INCREMENT,
+ADD primary key (id_credito);
+
+ALTER TABLE creditos
+add foreign key (id_deudor) references deudores (id)
