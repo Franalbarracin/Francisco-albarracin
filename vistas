@@ -1,0 +1,31 @@
+CREATE VIEW vista_creditos AS
+SELECT c.id_credito, c.monto, c.fecha_del_credito, c.cantidad_de_creditos, d.nombre_completo AS nombre_deudor, e.nombre_empresa
+FROM creditos c
+JOIN deudores d ON c.id_deudor = d.id_deudor
+JOIN empresas e ON c.id_empresa = e.id_empresa;
+
+CREATE VIEW vista_empleados_empresa AS
+SELECT emp.id_empleado, emp.nombre_empleado, emp.dni_empleado, emp.telefono, emp.email, emp.id_empresa, e.nombre_empresa
+FROM empleados emp
+JOIN empresas e ON emp.id_empresa = e.id_empresa;
+
+CREATE VIEW vista_estudio_empleados AS
+SELECT est.Id_empleado, emp.nombre_empleado, est.telefono, est.dni_empleado, est.email, est.id_empresa, e.nombre_empresa
+FROM estudio est
+JOIN empleados emp ON est.Id_empleado = emp.id_empleado
+JOIN empresas e ON est.id_empresa = e.id_empresa;
+
+CREATE VIEW vista_creditos_deudores AS
+SELECT c.id_credito, c.monto, c.fecha_del_credito, c.cantidad_de_creditos, d.nombre_completo AS nombre_deudor, e.nombre_empresa,
+       SUM(c.monto) AS monto_total
+FROM creditos c
+JOIN deudores d ON c.id_deudor = d.id_deudor
+JOIN empresas e ON c.id_empresa = e.id_empresa
+GROUP BY c.id_deudor;
+
+CREATE VIEW vista_empleados_deudores AS
+SELECT 'Empleado' AS tipo, id_empleado AS id, nombre_empleado AS nombre, dni_empleado AS dni, telefono, email, id_empresa
+FROM empleados
+UNION
+SELECT 'Deudor', id_deudor, nombre_completo, '', '', email, NULL
+FROM deudores;
