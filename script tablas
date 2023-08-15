@@ -1,67 +1,49 @@
-CREATE SCHEMA Estudio_Juridico;
-Use Estudio_juridico;
-
-create table Deudores(
-ID int,
-nombre_completo varchar(30),
-fecha_de_contacto date,
-ciudad varchar(30),
-edad varchar(30),	
-email varchar(30)
-);
-alter table deudores
-add email varchar(30);
-
-
-
-create table Creditos(
-ID_empresa int,
-Monto varchar(30),
-fecha_del_credito date,
-Cantidad_creditos varchar(30)
-);
-alter table creditos
-add id_credito int;
-alter table creditos
-add id_deudor int;
-
-create table Empleados(
-ID_Empleados int,
-Nombre_completo varchar(30),
-DNI_empleados varchar(30),
-Telefono varchar(30),
-email varchar(30)
-);
-alter table empleados
-add id_empresas int;
-
-create table Estudio(
-ID_Empleados int,
-ID_empresas int,
-datos_del_estudio varchar(30),
-Telefono varchar(30),
-email varchar(30)
+create schema ESTUDIO_JURIDICO;
+use estudio_juridico;
+CREATE TABLE empresas (
+    id_empresa INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_empresa VARCHAR(100),
+    email VARCHAR(100),
+    telefono VARCHAR(20)
 );
 
-create table Empresas(
-ID_Empleados int,
-ID_empresas int,
-Nombre varchar(30),
-Telefono varchar(30),
-email varchar(30)
+CREATE TABLE deudores (
+    id_deudor INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_completo VARCHAR(100),
+    fecha_de_contacto DATE,
+    ciudad VARCHAR(50),
+    edad INT,
+    email VARCHAR(100)
 );
 
-ALTER TABLE Deudores
-CHANGE COLUMN id id INT NOT NULL AUTO_INCREMENT,
-ADD PRIMARY KEY (id);
+CREATE TABLE creditos (
+    id_credito INT AUTO_INCREMENT PRIMARY KEY,
+    monto DECIMAL(10, 2),
+    fecha_del_credito DATE,
+    cantidad_de_creditos INT,
+    id_empresa INT,
+    id_deudor INT,
+    FOREIGN KEY (id_empresa) REFERENCES empresas(id_empresa),
+    FOREIGN KEY (id_deudor) REFERENCES deudores(id_deudor)
+);
 
-ALTER TABLE empresas
-CHANGE COLUMN id_empresas id INT NOT NULL AUTO_INCREMENT,
-ADD primary key (id_empresas);
+CREATE TABLE empleados (
+    id_empleado INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_empleado VARCHAR(100),
+    dni_empleado VARCHAR(20),
+    telefono VARCHAR(20),
+    email VARCHAR(100),
+    id_empresa INT,
+    FOREIGN KEY (id_empresa) REFERENCES empresas(id_empresa)
+);
 
-ALTER TABLE creditos
-CHANGE COLUMN id_credito id_credito INT NOT NULL AUTO_INCREMENT,
-ADD primary key (id_credito);
-
-ALTER TABLE creditos
-add foreign key (id_deudor) references deudores (id)
+CREATE TABLE estudio (
+    Id_empleado INT,
+    nombre_empleado VARCHAR(100),
+    telefono VARCHAR(20),
+    dni_empleado VARCHAR(20),
+    email VARCHAR(100),
+    id_empresa INT,
+    FOREIGN KEY (Id_empleado) REFERENCES empleados(id_empleado),
+    FOREIGN KEY (id_empresa) REFERENCES empresas(id_empresa)
+);
