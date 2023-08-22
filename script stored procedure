@@ -1,0 +1,30 @@
+DELIMITER //
+CREATE PROCEDURE insertar_credito(
+    IN p_monto DECIMAL(10, 2),
+    IN p_fecha_del_credito DATE,
+    IN p_cantidad_de_creditos INT,
+    IN p_id_empresa INT,
+    IN p_id_deudor INT
+)
+BEGIN
+    INSERT INTO creditos (monto, fecha_del_credito, cantidad_de_creditos, id_empresa, id_deudor)
+    VALUES (p_monto, p_fecha_del_credito, p_cantidad_de_creditos, p_id_empresa, p_id_deudor);
+END;
+//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE obtener_detalles_deudor(
+    IN p_id_deudor INT
+)
+BEGIN
+    SELECT *
+    FROM deudores
+    WHERE id_deudor = p_id_deudor;
+END;
+//
+DELIMITER ;
+
+
+
