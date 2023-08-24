@@ -1,0 +1,59 @@
+CREATE TABLE bitacora_creditos (
+    id_bitacora INT AUTO_INCREMENT PRIMARY KEY,
+    accion VARCHAR(100),
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    usuario VARCHAR(50)
+);
+
+DELIMITER //
+CREATE TRIGGER before_update_creditos
+BEFORE UPDATE ON creditos
+FOR EACH ROW
+BEGIN
+    INSERT INTO bitacora_creditos (accion, usuario)
+    VALUES (CONCAT('Actualización del crédito ', OLD.id_credito, ' - Antes de la actualización'), USER());
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER after_insert_creditos
+AFTER INSERT ON creditos
+FOR EACH ROW
+BEGIN
+    INSERT INTO bitacora_creditos (accion, usuario)
+    VALUES (CONCAT('Nuevo crédito ', NEW.id_credito, ' - Después de la inserción'), USER());
+END;
+//
+DELIMITER ;
+
+ OTRO TRIGGER
+
+CREATE TABLE bitacora_empleados (
+    id_bitacora INT AUTO_INCREMENT PRIMARY KEY,
+    accion VARCHAR(100),
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    usuario VARCHAR(50)
+);
+
+DELIMITER //
+CREATE TRIGGER before_delete_empleados
+BEFORE DELETE ON empleados
+FOR EACH ROW
+BEGIN
+    INSERT INTO bitacora_empleados (accion, usuario)
+    VALUES (CONCAT('Eliminación del empleado ', OLD.id_empleado, ' - Antes de la eliminación'), USER());
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER after_update_empleados
+AFTER UPDATE ON empleados
+FOR EACH ROW
+BEGIN
+    INSERT INTO bitacora_empleados (accion, usuario)
+    VALUES (CONCAT('Actualización del empleado ', NEW.id_empleado, ' - Después de la actualización'), USER());
+END;
+//
+DELIMITER ;
