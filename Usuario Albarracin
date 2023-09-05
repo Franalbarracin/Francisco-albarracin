@@ -1,0 +1,7 @@
+use estudio_juridico	
+
+CREATE USER 'alan_gebhart'@'localhost' IDENTIFIED BY 'rata';
+GRANT SELECT ON estudio_juridico.* TO 'alan_gebhart'@'localhost';
+
+CREATE USER 'gonzalo_bazan'@'localhost' IDENTIFIED BY 'perro';
+GRANT SELECT, INSERT, UPDATE ON estudio_juridico.* TO 'gonzalo_bazan'@'localhost';
