@@ -1,0 +1,39 @@
+START TRANSACTION;
+
+Eliminar registros de la tabla "creditos" por ID de crédito
+DELETE FROM creditos WHERE id_credito IN (2, 4);
+
+Si deseas deshacer los cambios en la transacción
+ROLLBACK;
+
+Confirmar la transacción si estás satisfecho con los resultados
+COMMIT;
+
+
+APLICAREMOS EL USO DEL SAVE POINT CON LAS CONSIGNAS DEL DESAFIO
+
+
+START TRANSACTION;
+
+INSERT INTO deudores (nombre_completo, fecha_de_contacto, ciudad, edad, email)
+VALUES
+    ('John Duarte', '2022-03-20', 'New York', 26, 'john.doe@gmail.com'),
+    ('Alicia Benitez', '2022-04-05', 'Los Angeles', 32, 'alicia.b@gmail.com'),
+    ('David Suarez', '2022-05-15', 'Chicago', 29, 'david.s@gmail.com'),
+    ('Emilia Duarte', '2022-06-10', 'Houston', 24, 'emilia.d@gmail.com');
+
+
+SAVEPOINT savepoint_1;
+
+INSERT INTO deudores (nombre_completo, fecha_de_contacto, ciudad, edad, email)
+VALUES
+    ('Sofia Willington', '2022-07-20', 'Miami', 27, 'sofia.w@gmail.com'),
+    ('James Bueno', '2022-08-05', 'San Francisco', 35, 'james.b@gmail.com'),
+    ('Olivia Lazares', '2022-09-15', 'Seattle', 30, 'olivia.l@gmail.com'),
+    ('Daniel Blarasin', '2022-10-10', 'Denver', 28, 'daniel.b@gmail.com');
+
+SAVEPOINT savepoint_2;
+
+COMMIT;
+
+ROLLBACK;
