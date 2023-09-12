@@ -1,0 +1,103 @@
+-- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+--
+-- Host: localhost    Database: estudio_juridico
+-- Backup de Datos de las siguientes tablas:
+-- - bitacora_creditos
+-- - bitacora_empleados
+-- - creditos
+-- - deudores
+-- - empleados
+-- - empresas
+-- - estudio
+-- ------------------------------------------------------
+-- Server version	8.0.33
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Dumping data for table `bitacora_creditos`
+--
+
+LOCK TABLES `bitacora_creditos` WRITE;
+/*!40000 ALTER TABLE `bitacora_creditos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bitacora_creditos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `bitacora_empleados`
+--
+
+LOCK TABLES `bitacora_empleados` WRITE;
+/*!40000 ALTER TABLE `bitacora_empleados` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bitacora_empleados` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `creditos`
+--
+
+LOCK TABLES `creditos` WRITE;
+/*!40000 ALTER TABLE `creditos` DISABLE KEYS */;
+INSERT INTO `creditos` VALUES (1,89562.26,'2020-05-08',2,1,2),(3,10520.80,'2020-04-23',1,2,4),(5,180470.30,'2023-12-12',2,3,5),(6,1000.00,'2023-08-14',1,1,1);
+/*!40000 ALTER TABLE `creditos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `deudores`
+--
+
+LOCK TABLES `deudores` WRITE;
+/*!40000 ALTER TABLE `deudores` DISABLE KEYS */;
+INSERT INTO `deudores` VALUES (1,'Juan Perez','2021-05-08','Cordoba',25,'juanperez@gmail.com'),(2,'Maria Lopez','2021-12-01','Buenos Aires',30,'marialopez@gmail.com'),(3,'Carlos Ramirez','2021-02-08','Rosario',28,'carlosramirez@gmail.com'),(4,'Ana Martinez','2021-07-11','Cordoba',22,'anamartinez@gmail.com'),(5,'Pedro Garcia','2021-07-03','Mendoza',29,'pedrogarcia@gmail.com'),(6,'John Duarte','2022-03-20','New York',26,'john.doe@gmail.com'),(7,'Alicia Benitez','2022-04-05','Los Angeles',32,'alicia.b@gmail.com'),(8,'David Suarez','2022-05-15','Chicago',29,'david.s@gmail.com'),(9,'Emilia Duarte','2022-06-10','Houston',24,'emilia.d@gmail.com'),(10,'Sofia Willington','2022-07-20','Miami',27,'sofia.w@gmail.com'),(11,'James Bueno','2022-08-05','San Francisco',35,'james.b@gmail.com'),(12,'Olivia Lazares','2022-09-15','Seattle',30,'olivia.l@gmail.com'),(13,'Daniel Blarasin','2022-10-10','Denver',28,'daniel.b@gmail.com');
+/*!40000 ALTER TABLE `deudores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `empleados`
+--
+
+LOCK TABLES `empleados` WRITE;
+/*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
+INSERT INTO `empleados` VALUES (1,'Gonzalo Bazan','41847439','3517552120','gonzalobazan@gmail.com',1),(2,'Alan Gebhart','39620004','3513512684','alangebhart@gmail.com',2),(3,'Miguel Rodriguez','27589542','3516501478','miguelrodriguez@gmail.com',3),(4,'Juan Amato','40516248','3517534568','juanamato@gmail.com',2);
+/*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `empresas`
+--
+
+LOCK TABLES `empresas` WRITE;
+/*!40000 ALTER TABLE `empresas` DISABLE KEYS */;
+INSERT INTO `empresas` VALUES (1,'Nico_calzados','nicocalzados@gmail.com','3517521402'),(2,'Tarjeta_naranja','tarjetanaranja@gmail.com','3516982534'),(3,'Sippsa','sippsa@gmail.com','3514125525'),(4,'Lord_Green','lordgreen@gmail.com','3517423502');
+/*!40000 ALTER TABLE `empresas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `estudio`
+--
+
+LOCK TABLES `estudio` WRITE;
+/*!40000 ALTER TABLE `estudio` DISABLE KEYS */;
+INSERT INTO `estudio` VALUES (1,'Gonzalo Bazan','41847439','3517552120','gonzalobazan@gmail.com',1),(2,'Alan Gebhart','39620004','3513512684','alangebhart@gmail.com',2),(3,'Miguel Rodriguez','27589542','3516501478','miguelrodriguez@gmail.com',3),(4,'Juan Amato','40516248','3517534568','juanamato@gmail.com',2);
+/*!40000 ALTER TABLE `estudio` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-09-11 21:17:43
