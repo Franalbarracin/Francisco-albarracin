@@ -47,3 +47,35 @@ CREATE TABLE estudio (
     FOREIGN KEY (Id_empleado) REFERENCES empleados(id_empleado),
     FOREIGN KEY (id_empresa) REFERENCES empresas(id_empresa)
 );
+
+CREATE TABLE pagos (
+    id_pago INT AUTO_INCREMENT PRIMARY KEY,
+    id_deudor INT,
+    id_credito INT,
+    fecha_pago DATE,
+    monto_pago DECIMAL(10, 2),
+    FOREIGN KEY (id_deudor) REFERENCES deudores(id_deudor),
+    FOREIGN KEY (id_credito) REFERENCES creditos(id_credito)
+);
+
+CREATE TABLE gestion_cobranza (
+    id_gestion INT AUTO_INCREMENT PRIMARY KEY,
+    id_empleado_cobranza INT,
+    id_deudor INT,
+    fecha_gestion DATE,
+    resultado VARCHAR(255),
+    observaciones TEXT,
+    FOREIGN KEY (id_empleado_cobranza) REFERENCES empleados_cobranza(id_empleado_cobranza),
+    FOREIGN KEY (id_deudor) REFERENCES deudores(id_deudor)
+);
+
+CREATE TABLE notas (
+    id_nota INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_nota VARCHAR(50),
+    id_relacion INT,
+    fecha_nota DATE,
+    contenido TEXT,
+    FOREIGN KEY (id_relacion) REFERENCES deudores(id_deudor) ON DELETE CASCADE,
+    -- Puedes agregar más FOREIGN KEY según sea necesario
+);
+
